@@ -1,0 +1,46 @@
+<form (ngSubmit)="handleSubmit()" [formGroup]="userForm">
+
+  <div class="groupInput">
+    <div class="label"><label>Nom</label></div>
+    <input formControlName="name" class="bckgError">
+  </div>
+  <div *ngIf="nameCtrl.dirty && nameCtrl.hasError('pattern')">Le nom doit commencer par une majuscule</div>
+  <div *ngIf="nameCtrl.dirty && nameCtrl.hasError('required')">Le champ nom est obligatoire</div>
+
+  <div class="groupInput">
+    <div class="label"><label >Prénom</label></div>
+    <input [formControl]="surnameCtrl" class="bckgError">
+
+  </div>
+  <div *ngIf="surnameCtrl.dirty && surnameCtrl.hasError('required')">Le champ prénom est obligatoire</div>
+
+  <div class="groupInput">
+    <div class="label"><label>Téléphone</label></div>
+    <input [formControl]="phoneCtrl" class="bckgError">
+
+  </div>
+  <div *ngIf="phoneCtrl.dirty && phoneCtrl.hasError('pattern')">Le champ numéro n'est pas valide</div>
+
+  <div class="groupInput">
+    <div class="label"><label>Email</label></div>
+    <input [formControl]="emailCtrl" class="bckgError">
+
+  </div>
+  <div *ngIf="emailCtrl.dirty && emailCtrl.hasError('email')">Le champ email n'est pas valide</div>
+  <div *ngIf="emailCtrl.dirty && emailCtrl.hasError('required')">Le champ email est obligatoire</div>
+
+  <div class="groupInput">
+    <div class="label"><label >Connaissances</label></div>
+    <select [formControl]="knowledgeCtrl" class="bckgError">
+      <option value="">--selectionnez une connaissance--</option>
+      <option selected value="Javascript">Javascript</option>
+      <option value="Angular">Angular</option>
+      <option value="TypeScript">TypeScript</option>
+    </select>
+
+  </div>
+  <div *ngIf="knowledgeCtrl.dirty && knowledgeCtrl.hasError('required')">Le champ connaissances est obligatoire</div>
+  <div *ngIf="knowledgeCtrl.dirty && knowledgeCtrl.hasError('knowledgeValid')">Cette connaissance est inconnue</div>
+  <button type="submit" [disabled]="userForm.invalid">Inscription</button>
+  <button type="reset" (click)="handleClear()">Effacer tout</button>
+</form>

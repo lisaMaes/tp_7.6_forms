@@ -1,0 +1,15 @@
+label{
+  margin-right: 10px ;
+
+}
+.label{
+  width : 35%;
+}
+.groupInput{
+  display: flex;
+}
+
+.bckgError.ng-dirty.ng-invalid{
+  background-color: crimson;
+  color: white;
+}
